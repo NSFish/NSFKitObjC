@@ -1,0 +1,6 @@
+framework module NSFKitObjC {
+  umbrella header "NSFKitObjC-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,18 @@
+language: objective-c
+osx_image: xcode10.3
+before_install: true
+install: true
+branches:
+  only:
+    - master
+script:
+  - script/build
+xcode_workspace: Example/NSFKitObjC.xcworkspace
+matrix:
+  include:
+    - xcode_scheme: NSFKitObjC-Example
+      env:
+        - XCODE_SDK=iphonesimulator
+        - XCODE_ACTION="build-for-testing test-without-building"
+        - XCODE_DESTINATION="platform=iOS Simulator"
+      

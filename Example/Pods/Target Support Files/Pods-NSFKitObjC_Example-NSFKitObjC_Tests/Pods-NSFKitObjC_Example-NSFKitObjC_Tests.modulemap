@@ -1,0 +1,6 @@
+framework module Pods_NSFKitObjC_Example_NSFKitObjC_Tests {
+  umbrella header "Pods-NSFKitObjC_Example-NSFKitObjC_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

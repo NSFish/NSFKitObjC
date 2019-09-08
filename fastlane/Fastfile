@@ -1,0 +1,138 @@
+desc "一键自动化发布 pod"
+desc "1. 检查所有代码是否都已经 commit"
+desc "2. pod install && 单元测试"
+desc "3. 更新 Info.plist 中的 version number && 更新 podspec && 更新 build number"
+desc "4. git add && git commit && git push 版本号变更"
+desc "5. 根据上一次 tag 以来的 commit 自动生成 release note"
+desc "6. git tag && git push origin tag"
+desc ""
+desc "参数说明："
+desc "- type:发布类型，包括 patch、minor 和 major"
+lane :release_pod do |options|
+  # 确保在 master 分支
+  ensure_git_branch
+  # 确保没有未 commit 的代码
+  ensure_git_status_clean
+
+  # 单元测试
+  cocoapods(
+    podfile: "Example/Podfile"
+  )
+  scan(
+    suppress_xcode_output: true
+  )
+
+  # 测试通过，计算版本号
+  version = calculate_version_number(
+    type: options[:type]
+  )
+
+  # 更新 Info.plist
+  plist_path = options[:plist_path] ? options[:plist_path] : ENV["DEPLOY_PLIST_PATH"]
+  set_info_plist_value(
+    path: plist_path,
+    key: "CFBundleShortVersionString",
+    value: version
+  )
+
+  # 更新 podspec
+  podspec = options[:podpsec] ? options[:podpsec] : ENV["DEPLOY_PODSPEC"]
+  version_bump_podspec(
+    path: podspec,
+    version_number: version
+  )
+
+  # 更新 build number
+  increment_build_number
+
+  # commit 版本号变更
+  git_add
+  git_commit(
+    path: ".",
+    message: "Release " + version,
+    allow_nothing_to_commit: true
+  )
+  push_to_git_remote(
+    remote: "origin"
+  )
+    
+  # tag
+  release_note = ""
+  if last_git_tag
+    release_note = changelog_from_git_commits(
+      between: [last_git_tag, "HEAD"],
+      pretty: "- %s",
+      date_format: "short",
+      match_lightweight_tag: false, 
+      merge_commit_filtering: "exclude_merges" 
+    )
+  end
+
+  add_git_tag(
+    tag: version,
+    message: release_note
+  )
+
+  push_git_tags
+
+ end
+
+desc "push 小修改"
+desc "单元测试 && git push"
+lane :test_and_push do |options|
+  # 确保没有未提交的代码
+  ensure_git_status_clean
+  
+  # 同步变动到 demo
+  cocoapods(
+    podfile: "Example/Podfile"
+  )
+
+  # 单元测试
+  scan
+
+  # git
+  push_to_git_remote(
+    remote: "origin"
+  )
+
+end
+
+desc "计算本次将提交的 tag"
+desc "参数说明："
+desc "- type:发布类型，包括 patch、minor 和 major"
+lane :dryrun_tag do |options|
+  version = calculate_version_number(
+    type: options[:type]
+  )
+
+  UI.success version
+end
+
+
+private_lane :calculate_version_number do |options|
+  type = options[:type]
+  old = last_git_tag
+  version = old
+
+  if !old 
+    old = " 0.0.0"
+  end
+
+  old[0] = ''
+  oldArr = old.split('.').map{|v| v.to_i}    
+
+  if type == "patch"
+    version = "#{oldArr[0]}.#{oldArr[1]}.#{oldArr[2] + 1}"
+  elsif type == "minor"
+    version = "#{oldArr[0]}.#{oldArr[1] + 1}.0"
+  elsif type == "major"
+    version = "#{oldArr[0] + 1}.0.0"
+  end   
+
+  if version == old
+    UI.user_error!("release type 无效，请输入: patch | minor | major")
+  end
+
+  version
+end

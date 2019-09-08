@@ -1,0 +1,38 @@
+platform :ios, "9.0"
+inhibit_all_warnings!
+use_frameworks!
+
+target 'NSFKitObjC_Example' do
+  pod 'Masonry'
+  pod 'UITableView+FDTemplateLayoutCell'
+  pod 'NSFKitObjC', :path => '../'
+
+  target 'NSFKitObjC_Tests' do
+    pod 'NSFKitObjC', :path => '../'
+
+    pod 'Quick', :inhibit_warnings => true
+    pod 'Nimble'
+  end
+end
+
+post_install do |installer|
+    puts 'Setting each pod Swift version to 5.0'
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '5.0'
+        end
+    end
+
+    pods_project = installer.pods_project
+    deployment_target_key = 'IPHONEOS_DEPLOYMENT_TARGET'
+    deployment_targets = pods_project.build_configurations.map{ |config| config.build_settings[deployment_target_key] }
+    minimal_deployment_target = deployment_targets.min_by{ |version| Gem::Version.new(version) }
+
+    puts 'Setting each pod deployment target to ' + minimal_deployment_target
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings[deployment_target_key] = minimal_deployment_target
+        end
+    end
+end
+

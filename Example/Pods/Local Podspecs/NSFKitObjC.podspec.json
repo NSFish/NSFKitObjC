@@ -1,0 +1,32 @@
+{
+  "name": "NSFKitObjC",
+  "version": "1.0.0",
+  "summary": "Cocoa touch enhancement for personal use.",
+  "description": "Mostly categories, fix bugs and avoid traps.",
+  "homepage": "https://github.com/NSFish/NSFKitObjC",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "NSFish": "lxy910428@gmail.com"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/NSFish/NSFKitObjC.git",
+    "tag": "1.0.0"
+  },
+  "source_files": "NSFKitObjC/**/*.{h,m}",
+  "exclude_files": "NSFKitObjC/NSFKitObjCTests/**/*.{h,m}",
+  "requires_arc": true,
+  "xcconfig": {
+    "FRAMEWORK_SEARCH_PATHS": "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+  },
+  "dependencies": {
+    "ReactiveObjC": [
+
+    ]
+  }
+}
