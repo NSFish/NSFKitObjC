@@ -58,6 +58,7 @@
 #import "NSFUIComponentRegistration.h"
 #import "UIApplication+NSFExt.h"
 #import "NSFLabel.h"
+#import "NSFTableViewCell.h"
 
 // MVVM
 #import "NSFBaseViewModel.h"

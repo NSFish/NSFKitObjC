@@ -19,8 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable UIViewController *)currentPresentedVC;
 + (UIViewController *)currentVisibleVC;
 + (UIViewController *)currentVisibleVCCountingPresent:(BOOL)countingPresent;
+- (BOOL)isTopVC;
 
 - (nullable UIViewController<NSFContainerViewController> *)containerVC;
+
+- (void)vanishIfPossible;
+- (void)vanishIfPossible:(BOOL)animated;
 
 #pragma mark - Unit Testing
 @property (class, nonatomic, weak) UIViewController *rootVC;

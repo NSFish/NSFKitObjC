@@ -106,6 +106,33 @@
     return (UIViewController<NSFContainerViewController> *)self.parentViewController;
 }
 
+- (BOOL)isTopVC
+{
+    return [self.navigationController.topViewController isEqual:self];
+}
+
+- (void)vanishIfPossible
+{
+    [self vanishIfPossible:YES];
+}
+
+- (void)vanishIfPossible:(BOOL)animated
+{
+    if (![self isTopVC])
+    {
+        return;
+    }
+    
+    if (self.navigationController.viewControllers.count > 1)
+    {
+        [self.navigationController popViewControllerAnimated:animated];
+    }
+    else if (self.presentingViewController)
+    {
+        [self dismissViewControllerAnimated:animated completion:nil];
+    }
+}
+
 #pragma mark - Unit Testing
 + (UIViewController *)rootVC
 {

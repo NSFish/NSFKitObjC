@@ -35,6 +35,7 @@
 #import "NSFButton.h"
 #import "NSFLabel.h"
 #import "NSFScreenAdaptor.h"
+#import "NSFTableViewCell.h"
 #import "NSFUIComponentRegistration.h"
 #import "NSFReusableUIComponent.h"
 #import "NSFCollectionViewDelegateProxy.h"
