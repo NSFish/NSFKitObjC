@@ -27,7 +27,7 @@ class UIViewControllerSpec: QuickSpec {
         describe("NSFContainerViewControllerProtocol") {
             context("Implemented by NSFContainerViewController") {
                 it("Should return currentContentVC as currentVC") {
-                    let vc = UIViewController.init()
+                    let vc = UIViewController()
                     let containerVC = NSFContainerViewController.init()
                     containerVC.setContentViewControllers([vc])
                     
@@ -37,7 +37,7 @@ class UIViewControllerSpec: QuickSpec {
             
             context("Implemented by UINavigationController") {
                 it("Should return topVC as currentVC") {
-                    let naviVC = UINavigationController.init(rootViewController: UIViewController.init())
+                    let naviVC = UINavigationController.init(rootViewController: UIViewController())
                     
                     expect(naviVC.currentContentVC).to(equal(naviVC.topViewController))
                 }
@@ -46,7 +46,7 @@ class UIViewControllerSpec: QuickSpec {
             context("Implemented by UITabBarController") {
                 it("Should return selectedVC as currentVC") {
                     let tabVC = UITabBarController.init()
-                    tabVC.viewControllers = [UIViewController.init()]
+                    tabVC.viewControllers = [UIViewController()]
                     
                     expect(tabVC.currentContentVC).to(equal(tabVC.selectedViewController))
                 }
@@ -72,7 +72,7 @@ class UIViewControllerSpec: QuickSpec {
             context("When using UINavigationController - UIViewController structure") {
                 it("Should return UIViewController") {
                     let vc = UIViewController()
-                    let naviVC = UINavigationController.embed(vc)
+                    let naviVC = UINavigationController.embed(rootVC: vc)
                     
                     UIViewController.rootVC?.present(naviVC, animated: false, completion: nil)
                     
@@ -108,7 +108,7 @@ class UIViewControllerSpec: QuickSpec {
                 context("When using UINavigationController - UIViewController structure") {
                     context("with one child") {
                         it("Should return topVC") {
-                            let naviVC = UINavigationController.init(rootViewController: UIViewController.init())
+                            let naviVC = UINavigationController.init(rootViewController: UIViewController())
                             UIViewController.rootVC = naviVC
                             
                             expect(UIViewController.currentVisibleVCCountingPresent(false)).to(be(naviVC.topViewController))
@@ -117,8 +117,8 @@ class UIViewControllerSpec: QuickSpec {
                     
                     context("with multiple children") {
                         it("Should return topVC") {
-                            let naviVC = UINavigationController.init(rootViewController: UIViewController.init())
-                            naviVC.pushViewController(UIViewController.init(), animated: false)
+                            let naviVC = UINavigationController.init(rootViewController: UIViewController())
+                            naviVC.pushViewController(UIViewController(), animated: false)
                             UIViewController.rootVC = naviVC
                             
                             expect(UIViewController.currentVisibleVCCountingPresent(false)).to(be(naviVC.topViewController))
@@ -130,7 +130,7 @@ class UIViewControllerSpec: QuickSpec {
                     context("with one child") {
                         it("Should return tabVC's selectedVC") {
                             let tabVC = UITabBarController.init()
-                            tabVC.viewControllers = [UIViewController.init()]
+                            tabVC.viewControllers = [UIViewController()]
                             UIViewController.rootVC = tabVC
                             
                             expect(UIViewController.currentVisibleVCCountingPresent(false)).to(be(tabVC.selectedViewController))
@@ -140,7 +140,7 @@ class UIViewControllerSpec: QuickSpec {
                     context("with multiple children") {
                         it("Should return tabVC's selectedVC") {
                             let tabVC = UITabBarController.init()
-                            tabVC.viewControllers = [UIViewController.init(), UIViewController.init()]
+                            tabVC.viewControllers = [UIViewController(), UIViewController()]
                             UIViewController.rootVC = tabVC
                             
                             expect(UIViewController.currentVisibleVCCountingPresent(false)).to(be(tabVC.selectedViewController))
@@ -152,7 +152,7 @@ class UIViewControllerSpec: QuickSpec {
                     context("with one child") {
                         it("Should return tabVC's selectedVC's topVC") {
                             let tabVC = UITabBarController.init()
-                            let naviVC = UINavigationController.embed(UIViewController.init())
+                            let naviVC = UINavigationController.embed(rootVC: UIViewController())
                             tabVC.viewControllers = [naviVC]
                             UIViewController.rootVC = tabVC
                             
@@ -163,8 +163,8 @@ class UIViewControllerSpec: QuickSpec {
                     context("with multiple children") {
                         it("Should return tabVC's selectedVC's topVC") {
                             let tabVC = UITabBarController.init()
-                            let naviVCs = [UINavigationController.embed(UIViewController.init()),
-                                           UINavigationController.embed(UIViewController.init())]
+                            let naviVCs = [UINavigationController.embed(rootVC: UIViewController()),
+                                           UINavigationController.embed(rootVC: UIViewController())]
                             tabVC.viewControllers = naviVCs
                             UIViewController.rootVC = tabVC
                             
@@ -188,8 +188,8 @@ class UIViewControllerSpec: QuickSpec {
                     context("with multiple children") {
                         it("Should return NSFContainerVC's currentContentVC") {
                             let containerVC = NSFContainerViewController.init()
-                            containerVC.setContentViewControllers([UIViewController.init(),
-                                                                   UIViewController.init()])
+                            containerVC.setContentViewControllers([UIViewController(),
+                                                                   UIViewController()])
                             containerVC.setCurrentContentVC(containerVC.children.last, animated: false)
                             UIViewController.rootVC = containerVC
                             
@@ -202,7 +202,7 @@ class UIViewControllerSpec: QuickSpec {
                     it("Should return NSFContainerVC's currentContentVC") {
                         let containerVC = NSFContainerViewController.init()
                         containerVC.addContentViewController(UIViewController(), autolayoutConfig: nil)
-                        UIViewController.rootVC = UINavigationController.embed(containerVC)
+                        UIViewController.rootVC = UINavigationController.embed(rootVC: containerVC)
                         
                         expect(UIViewController.currentVisibleVCCountingPresent(false)).to(be(containerVC.currentContentVC))
                     }
@@ -210,7 +210,7 @@ class UIViewControllerSpec: QuickSpec {
                 
                 context("When using UITabBarController - UINavigationController - NSFContainerViewController - UIViewController structure") {
                     it("Should return NSFContainerVC's currentContentVC") {
-                        let vc = UIViewController.init()
+                        let vc = UIViewController()
                         let containerVC = NSFContainerViewController.init()
                         containerVC.addContentViewController(vc, autolayoutConfig: nil)
                         let naviVC = UINavigationController.init(rootViewController: containerVC)
@@ -225,7 +225,7 @@ class UIViewControllerSpec: QuickSpec {
             }
             
             context("Counting presented VC") {
-                let naviVC = UINavigationController.embed(UIViewController.init())
+                let naviVC = UINavigationController.embed(rootVC: UIViewController())
                 UIViewController.rootVC?.present(naviVC, animated: false, completion: nil)
                 
                 expect(UIViewController.currentVisibleVC()).toEventually(equal(UIViewController.currentPresentedVC()))

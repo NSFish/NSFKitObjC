@@ -15,25 +15,31 @@
     return [[self alloc] initWithRootViewController:rootVC];
 }
 
-- (void)nsf_popViewControllers:(NSUInteger)number animated:(BOOL)animated
+- (void)nsf_popViewControllers:(NSInteger)number animated:(BOOL)animated
 {
-    if (number == 0)
+    if (number <= 0
+        || number >= self.viewControllers.count)
     {
         return;
     }
-    else if (number >= self.viewControllers.count)
-    {
-        // do nothing
-    }
-    else
-    {
-        UIViewController *vc = self.viewControllers[self.viewControllers.count - number];
-        [self popToViewController:vc animated:animated];
-    }
+    
+    UIViewController *vc = self.viewControllers[self.viewControllers.count - number - 1];
+    [self popToViewController:vc animated:animated];
 }
 
 - (void)nsf_replaceCurrentViewControllerWith:(UIViewController *)vc animated:(BOOL)animated
 {
+    if (self.viewControllers.count == 0)
+    {
+        return;
+    }
+    
+    if ([vc isKindOfClass:[UITabBarController class]]
+        || [vc isKindOfClass:[UINavigationController class]])
+    {
+        return;
+    }
+    
     if ([self.viewControllers containsObject:vc])
     {
         return;
@@ -53,8 +59,8 @@
 }
 
 - (void)nsf_replaceLastSeveralViewControllers:(NSUInteger)number
-                                        with:(UIViewController *)vc
-                                    animated:(BOOL)animated
+                                         with:(UIViewController *)vc
+                                     animated:(BOOL)animated
 {
     if ([self.topViewController isEqual:vc])
     {
@@ -68,7 +74,7 @@
     
     if ([self.viewControllers containsObject:vc])
     {
-         NSUInteger index = [self.viewControllers indexOfObject:vc];
+        NSUInteger index = [self.viewControllers indexOfObject:vc];
         if (index >= self.viewControllers.count - number)
         {
             [self popToViewController:vc animated:animated];

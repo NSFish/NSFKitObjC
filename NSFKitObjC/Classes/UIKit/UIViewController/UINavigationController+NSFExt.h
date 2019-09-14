@@ -13,22 +13,24 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UINavigationController (NSFExt)<NSFContainerViewController>
 
-+ (instancetype)embed:(UIViewController *)rootVC;
++ (instancetype)embed:(UIViewController *)rootVC NS_SWIFT_NAME(embed(rootVC:));
 
-- (void)nsf_popViewControllers:(NSUInteger)number animated:(BOOL)animated;
+- (void)nsf_popViewControllers:(NSInteger)number
+                      animated:(BOOL)animated NS_SWIFT_NAME(pop(number:animated:));
 
 /**
  替换当前的 VC，动画效果看起来和 Push 一样。目前已知的问题是
  1. 被替换的 VC 的 viewWillDisappear 方法中，获取到的 navigationController 是 nil
  2. 被替换的 VC 消失时，willMoveToParentViewController: 不会被调用
-
+ 
  @param vc 待显示的 VC
  */
-- (void)nsf_replaceCurrentViewControllerWith:(UIViewController *)vc animated:(BOOL)animated;
+- (void)nsf_replaceCurrentViewControllerWith:(UIViewController *)vc
+                                    animated:(BOOL)animated NS_SWIFT_NAME(replaceCurrentVC(with:animated:));
 
 - (void)nsf_replaceLastSeveralViewControllers:(NSUInteger)number
-                                        with:(UIViewController *)vc
-                                    animated:(BOOL)animated;
+                                         with:(UIViewController *)vc
+                                     animated:(BOOL)animated;
 
 @end
 
