@@ -15,7 +15,8 @@
     return [[self alloc] initWithRootViewController:rootVC];
 }
 
-- (void)nsf_popViewControllers:(NSInteger)number animated:(BOOL)animated
+- (void)nsf_popViewControllers:(NSInteger)number
+                      animated:(BOOL)animated
 {
     if (number <= 0
         || number >= self.viewControllers.count)
@@ -27,7 +28,8 @@
     [self popToViewController:vc animated:animated];
 }
 
-- (void)nsf_replaceCurrentViewControllerWith:(UIViewController *)vc animated:(BOOL)animated
+- (void)nsf_replaceCurrentVCWith:(UIViewController *)vc
+                        animated:(BOOL)animated
 {
     if (self.viewControllers.count == 0)
     {
@@ -54,39 +56,6 @@
     
     NSMutableArray<UIViewController *> *childVCs = [self.viewControllers mutableCopy];
     [childVCs removeLastObject];
-    [childVCs addObject:vc];
-    [self setViewControllers:childVCs animated:animated];
-}
-
-- (void)nsf_replaceLastSeveralViewControllers:(NSUInteger)number
-                                         with:(UIViewController *)vc
-                                     animated:(BOOL)animated
-{
-    if ([self.topViewController isEqual:vc])
-    {
-        return;
-    }
-    
-    if (number == 0 || !vc)
-    {
-        return;
-    }
-    
-    if ([self.viewControllers containsObject:vc])
-    {
-        NSUInteger index = [self.viewControllers indexOfObject:vc];
-        if (index >= self.viewControllers.count - number)
-        {
-            [self popToViewController:vc animated:animated];
-        }
-        
-        return;
-    }
-    
-    vc.hidesBottomBarWhenPushed = self.viewControllers.lastObject.hidesBottomBarWhenPushed;
-    
-    NSMutableArray<UIViewController *> *childVCs = [self.viewControllers mutableCopy];
-    [childVCs removeObjectsInRange:NSMakeRange(self.viewControllers.count - number, number)];
     [childVCs addObject:vc];
     [self setViewControllers:childVCs animated:animated];
 }

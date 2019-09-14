@@ -25,12 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param vc 待显示的 VC
  */
-- (void)nsf_replaceCurrentViewControllerWith:(UIViewController *)vc
-                                    animated:(BOOL)animated NS_SWIFT_NAME(replaceCurrentVC(with:animated:));
-
-- (void)nsf_replaceLastSeveralViewControllers:(NSUInteger)number
-                                         with:(UIViewController *)vc
-                                     animated:(BOOL)animated;
+- (void)nsf_replaceCurrentVCWith:(UIViewController *)vc
+                        animated:(BOOL)animated NS_SWIFT_NAME(replaceCurrentVC(with:animated:));
 
 @end
 
