@@ -15,7 +15,7 @@ DEPENDENCIES:
   - "UITableView+FDTemplateLayoutCell"
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Masonry
     - Nimble
     - Quick
@@ -36,4 +36,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 7b2c05adc88eb4562173e167c81cd457431edca7
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.3

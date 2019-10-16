@@ -11,7 +11,7 @@
 // Foundation
 #import "NSObject+NSFExt.h"
 #import "NSTimer+NSFExt.h"
-#import "NSFPrioritizedDelegate.h"
+#import "NSFPrioritizedDelegateContainer.h"
 #import "NSError+NSFExt.h"
 #import "NSArray+NSFExt.h"
 #import "UIScrollView+NSFExt.h"

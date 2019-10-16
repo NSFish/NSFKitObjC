@@ -32,6 +32,7 @@
 		700D01F823245DF900391086 /* UIViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700D01F323245DF900391086 /* UIViewControllerSpec.swift */; };
 		700D01F923245DF900391086 /* NSFPrioritizedDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700D01F423245DF900391086 /* NSFPrioritizedDelegateSpec.swift */; };
 		705E24A7232B9DE900201F03 /* UINavigationControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E24A6232B9DE900201F03 /* UINavigationControllerSpec.swift */; };
+		70BCA1C92356A44600CF9BB5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BCA1C82356A44600CF9BB5 /* Utils.swift */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		78FD361936EAD5654E1687FA /* Pods_NSFKitObjC_Example_NSFKitObjC_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753998213DA7564B19D04114 /* Pods_NSFKitObjC_Example_NSFKitObjC_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
@@ -94,6 +95,7 @@
 		700D01F323245DF900391086 /* UIViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerSpec.swift; sourceTree = "<group>"; };
 		700D01F423245DF900391086 /* NSFPrioritizedDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFPrioritizedDelegateSpec.swift; sourceTree = "<group>"; };
 		705E24A6232B9DE900201F03 /* UINavigationControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerSpec.swift; sourceTree = "<group>"; };
+		70BCA1C82356A44600CF9BB5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		753998213DA7564B19D04114 /* Pods_NSFKitObjC_Example_NSFKitObjC_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NSFKitObjC_Example_NSFKitObjC_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		772A08F5FAD520B712E2A710 /* Pods-NSFKitObjC_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NSFKitObjC_Tests.release.xcconfig"; path = "Target Support Files/Pods-NSFKitObjC_Tests/Pods-NSFKitObjC_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				700D01F223245DF800391086 /* TimerSpec.swift */,
 				700D01F323245DF900391086 /* UIViewControllerSpec.swift */,
 				705E24A6232B9DE900201F03 /* UINavigationControllerSpec.swift */,
+				70BCA1C82356A44600CF9BB5 /* Utils.swift */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
@@ -335,12 +338,12 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = NSF;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = NSFish;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
 						DevelopmentTeam = nsfish;
-						LastSwiftMigration = 1100;
+						LastSwiftMigration = 1110;
 					};
 					6003F5AD195388D20070C39A = {
 						LastSwiftMigration = 1100;
@@ -513,6 +516,7 @@
 				705E24A7232B9DE900201F03 /* UINavigationControllerSpec.swift in Sources */,
 				700D01F623245DF900391086 /* NSFTableViewDelegateProxySpec.swift in Sources */,
 				700D01F823245DF900391086 /* UIViewControllerSpec.swift in Sources */,
+				70BCA1C92356A44600CF9BB5 /* Utils.swift in Sources */,
 				700D01F723245DF900391086 /* TimerSpec.swift in Sources */,
 				700D01F523245DF900391086 /* NSFCollectionViewDelegateProxySpec.swift in Sources */,
 				700D01F923245DF900391086 /* NSFPrioritizedDelegateSpec.swift in Sources */,
@@ -653,6 +657,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

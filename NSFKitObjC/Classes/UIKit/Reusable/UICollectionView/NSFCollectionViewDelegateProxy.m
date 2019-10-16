@@ -1,6 +1,5 @@
 //
 //  NSFCollectionViewDelegateProxy.m
-//  AFNetworking
 //
 //  Created by shlexingyu on 2018/11/16.
 //

@@ -15,7 +15,7 @@
 #import "NSFBoxing.h"
 #import "NSFDateFormatterHandler.h"
 #import "NSFLightweightGenericSupport.h"
-#import "NSFPrioritizedDelegate.h"
+#import "NSFPrioritizedDelegateContainer.h"
 #import "NSFRuntimeUtils.h"
 #import "NSObject+NSFExt.h"
 #import "NSString+NSFExt.h"
