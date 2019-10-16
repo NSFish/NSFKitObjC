@@ -1,5 +1,5 @@
 //
-//  NSFPrioritizedDelegateSpec.swift
+//  NSFPrioritizedDelegateContainerSpec.swift
 //  NSFKit
 //
 //  Created by shlexingyu on 2018/11/12.
@@ -10,7 +10,7 @@ import Quick
 import Nimble
 import NSFKitObjC
 
-class NSFPrioritizedDelegateSpec: QuickSpec {
+class NSFPrioritizedDelegateContainerSpec: QuickSpec {
     
     override func spec() {
         

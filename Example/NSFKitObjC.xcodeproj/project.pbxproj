@@ -30,7 +30,7 @@
 		700D01F623245DF900391086 /* NSFTableViewDelegateProxySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700D01F123245DF800391086 /* NSFTableViewDelegateProxySpec.swift */; };
 		700D01F723245DF900391086 /* TimerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700D01F223245DF800391086 /* TimerSpec.swift */; };
 		700D01F823245DF900391086 /* UIViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700D01F323245DF900391086 /* UIViewControllerSpec.swift */; };
-		700D01F923245DF900391086 /* NSFPrioritizedDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700D01F423245DF900391086 /* NSFPrioritizedDelegateSpec.swift */; };
+		700D01F923245DF900391086 /* NSFPrioritizedDelegateContainerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700D01F423245DF900391086 /* NSFPrioritizedDelegateContainerSpec.swift */; };
 		705E24A7232B9DE900201F03 /* UINavigationControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E24A6232B9DE900201F03 /* UINavigationControllerSpec.swift */; };
 		70BCA1C92356A44600CF9BB5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BCA1C82356A44600CF9BB5 /* Utils.swift */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
@@ -93,7 +93,7 @@
 		700D01F123245DF800391086 /* NSFTableViewDelegateProxySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFTableViewDelegateProxySpec.swift; sourceTree = "<group>"; };
 		700D01F223245DF800391086 /* TimerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerSpec.swift; sourceTree = "<group>"; };
 		700D01F323245DF900391086 /* UIViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerSpec.swift; sourceTree = "<group>"; };
-		700D01F423245DF900391086 /* NSFPrioritizedDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFPrioritizedDelegateSpec.swift; sourceTree = "<group>"; };
+		700D01F423245DF900391086 /* NSFPrioritizedDelegateContainerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFPrioritizedDelegateContainerSpec.swift; sourceTree = "<group>"; };
 		705E24A6232B9DE900201F03 /* UINavigationControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerSpec.swift; sourceTree = "<group>"; };
 		70BCA1C82356A44600CF9BB5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				700D01F023245DF800391086 /* NSFCollectionViewDelegateProxySpec.swift */,
-				700D01F423245DF900391086 /* NSFPrioritizedDelegateSpec.swift */,
+				700D01F423245DF900391086 /* NSFPrioritizedDelegateContainerSpec.swift */,
 				700D01F123245DF800391086 /* NSFTableViewDelegateProxySpec.swift */,
 				700D01F223245DF800391086 /* TimerSpec.swift */,
 				700D01F323245DF900391086 /* UIViewControllerSpec.swift */,
@@ -519,7 +519,7 @@
 				70BCA1C92356A44600CF9BB5 /* Utils.swift in Sources */,
 				700D01F723245DF900391086 /* TimerSpec.swift in Sources */,
 				700D01F523245DF900391086 /* NSFCollectionViewDelegateProxySpec.swift in Sources */,
-				700D01F923245DF900391086 /* NSFPrioritizedDelegateSpec.swift in Sources */,
+				700D01F923245DF900391086 /* NSFPrioritizedDelegateContainerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
